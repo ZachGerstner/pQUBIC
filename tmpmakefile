@@ -1,0 +1,28 @@
+VER=0.0.1
+DIST=qubic$(VER)
+PROGS=qubic
+NVCC=nvcc
+NVCC_OPTS=-arch=sm_30
+GCC_OPTS=-std=c++11 -g -O3 -Wall -ansi -I. -DVER=$(VER)
+CUDA_LD_FLAGS=-L -lcuda -lcudart
+
+final.o: struct.o read_array.o make_graph.o get_options.o fib.o write_block.o cluster.o main.o expand.o
+
+struct.o\
+
+read_array.o
+
+make_graph.o
+
+get_options.o
+
+fib.o
+
+write_block.o
+
+cluster.o: cluster.c cluster.cu cluster_parallel.cu cluster.h utils.h 
+	$(NVCC) -c cluster.c $(NVCC_OPTS)
+
+main.o
+
+expand.o
